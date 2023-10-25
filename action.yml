@@ -1,10 +1,6 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  node-version:
-    description: 'Node.js version'
-    required: true
-    default: '14.x'
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
@@ -27,12 +23,8 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: 'Checkout repository'
-      uses: 'actions/checkout@v2'
-    - name: 'Setup Node.js'
-      uses: 'actions/setup-node@v2'
-      with:
-        node-version: ${{ inputs.node-version }}
+    - name: 'Checkout master'
+      uses: actions/checkout@v3
     - name: 'az cli login'
       uses: azure/login@v1
       with:
@@ -40,6 +32,11 @@ runs:
         tenant-id: ${{ inputs.tenant-id }}
         subscription-id: ${{ inputs.subscription-id }}
         enable-AzPSSession: false
-    - name: 'Run hello.js'
-      run: node dist/index.js
-      shell: bash
+    - name: 'Az deploy - wordpress on app svc'
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b41b420ccb55ff45a032b83b2f85e65d6fa16aae/application-workloads/wordpress/wordpress-app-service-mysql-inapp/azuredeploy.json
+        parameters: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b41b420ccb55ff45a032b83b2f85e65d6fa16aae/application-workloads/wordpress/wordpress-app-service-mysql-inapp/azuredeploy.parameters.json
+        failOnStdErr: false
