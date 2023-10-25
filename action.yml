@@ -5,6 +5,15 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  client-id:
+    description: 'Client id to login to azure'
+    required: true
+  tenant-id:
+    description: 'Tenant id to login to azure'
+    required: true
+  subscription-id:
+    description: 'Subscription id to be used with your az login'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -23,9 +32,9 @@ runs:
     - name: 'az cli login'
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        client-id: ${{ inputs.client-id }}
+        tenant-id: ${{ inputs.tenant-id }}
+        subscription-id: ${{ inputs.subscription-id }}
         enable-AzPSSession: false
     - name: 'Run hello.js'
       run: node dist/index.js
