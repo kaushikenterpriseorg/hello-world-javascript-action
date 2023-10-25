@@ -13,7 +13,7 @@ permissions:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Job to run custom action
     environment:
      name: staging.azure
     steps:
