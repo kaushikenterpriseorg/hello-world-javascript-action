@@ -1,6 +1,10 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
+  node-version:
+    description: 'Node.js version'
+    required: true
+    default: '14.x'
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
