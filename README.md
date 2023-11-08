@@ -25,7 +25,7 @@ This action deploys IaaS resources required to launch a word press website runni
 
 ```yaml
 - name: Deploy word press to azure app service
-        uses: ./ # Uses an action in the root directory
+        uses: kaushikenterpriseorg/wordpress-azure-appservice-javascript-action@main # Uses an action in the root directory
         id: deploy
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
