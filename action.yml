@@ -4,10 +4,6 @@ branding:
   icon: 'play-circle'
   color: 'blue'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
   client-id:
     description: 'Client id to login to azure'
     required: true
@@ -20,9 +16,6 @@ inputs:
   resource-group-name:
     description: 'Resource group to deploy your resources to'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 #runs:
   # using: 'node20'
   # main: 'dist/index.js'
