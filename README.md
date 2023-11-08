@@ -1,18 +1,25 @@
-# Hello world javascript action
+# Deploy word-press to app service on Azure javascript action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action deploys IaaS resources required to launch a word press website running on App service on Azure
 
 ## Inputs
 
-### `who-to-greet`
+### `client-id`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** Application ID of the App registration with Azure Entra.
 
-## Outputs
+### `tenant-id`
 
-### `time`
+**Required** Microsoft Azure Tenant ID.
 
-The time we greeted you.
+### `subscription-id`
+
+**Required** Microsoft Azure subscription ID.
+
+### `resource-group-name`
+
+**Required** Name of the resource group your resources will be deployed to.
+
 
 ## Example usage
 
