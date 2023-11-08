@@ -1,5 +1,8 @@
 name: 'Deploy word press to app service action'
 description: 'Greet someone and record the time'
+branding:
+  icon: 'play-circle'
+  color: 'blue'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
